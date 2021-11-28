@@ -32,11 +32,11 @@ const Register = () => {
   };
   return (
     <main>
-      <div class="title">
+      <div className="title un">
         <h1>HRnet</h1>
       </div>
       <div className="container">
-        <Link to="/liste">View Current Employees</Link>
+        <Link className='link' to="/liste">View Current Employees</Link>
         <h2>Create Employee</h2>
         <form onSubmit={handleSubmit}>
           <label htmlFor="firstName">First Name</label>

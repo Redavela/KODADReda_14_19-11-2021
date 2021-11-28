@@ -46,8 +46,8 @@ function ListeEmployees() {
 
   return (
       <>
-      <h1>Current Employees</h1>
-    <Paper sx={{ width: '60%', margin:'auto', marginTop:'50', overflow: 'hidden' }}>
+      <h1 className='title deux'>Current Employees</h1>
+    <Paper sx={{ width: '60%', margin:'auto', overflow: 'hidden' }}>
       <TableContainer sx={{ maxHeight: 350 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
@@ -94,7 +94,7 @@ function ListeEmployees() {
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
     </Paper>
-    <Link to="/">Home</Link>
+    <Link className='link'to="/">Home</Link>
     </>
   );
 }
