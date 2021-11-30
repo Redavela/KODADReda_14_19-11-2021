@@ -4,10 +4,10 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-form{
+form {
   margin-top: 20px;
 }
 .container {
@@ -41,4 +41,10 @@ label {
 }
 .address {
   padding: 5px 40px 10px 10px;
+}
+
+button {
+  padding: 4px 10px;
+  margin: auto;
+  display: flex;
 }

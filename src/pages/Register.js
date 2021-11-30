@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { DropDown } from 'dropdownlib-reda';
 import { states, department } from '../DropDownData';
+import { toast } from 'react-toastify';
+
 
 const Register = () => {
   const [employeeForm, setEmployeeForm] = useState({
@@ -112,7 +114,7 @@ const Register = () => {
             handleSelect={handleChange}
             label="Department"
           />
-          <input type="submit" value="Save" />
+          <button type="submit" >Save</button>
         </form>
       </div>
     </main>
