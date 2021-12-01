@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -26,17 +26,11 @@ const columns = [
 function ListeEmployees() {
   const listeEmployees =
     JSON.parse(localStorage.getItem('listeEmployees')) || [];
-  format(new Date(2014, 1, 11), 'MM/dd/yyyy');
-  const rows = listeEmployees.map((employee) => {
-    return {
-      ...employee,
-      startDate: format(new Date(employee.startDate), 'dd/MM/yyyy'),
-      birth: format(new Date(employee.birth), 'dd/MM/yyyy'),
-    };
-  });
+
+  const [rows, setRows] = useState([]);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
-
+  const [searchTerm, setSearchTerm] = useState('');
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -49,16 +43,57 @@ function ListeEmployees() {
   const [order, setOrder] = useState('asc');
   const [orderBy, setOrderBy] = useState('firstName');
 
+  useEffect(() => {
+    setRows(
+      listeEmployees
+        .filter((employee, index) => {
+          let isFilter = false;
+          Object.keys(employee).some(function (item) {
+            isFilter = employee[item].includes(searchTerm);
+            if (isFilter) {
+              return true;
+            }
+          });
+          return isFilter;
+        })
+        .map((employee) => {
+          return {
+            ...employee,
+            startDate: format(new Date(employee.startDate), 'dd/MM/yyyy'),
+            birth: format(new Date(employee.birth), 'dd/MM/yyyy'),
+          };
+        })
+    );
+  }, [searchTerm]);
+
+  useEffect(() => {
+    setRows(
+      listeEmployees.map((employee) => {
+        return {
+          ...employee,
+          startDate: format(new Date(employee.startDate), 'dd/MM/yyyy'),
+          birth: format(new Date(employee.birth), 'dd/MM/yyyy'),
+        };
+      })
+    );
+  }, []);
+
   function descendingComparator(a, b, orderBy) {
-    if (orderBy === 'birth' || orderBy === 'startDate') {
-      return new Date(b[orderBy]).valueOf() - new Date(a[orderBy]).valueOf();
+    let vA = a[orderBy];
+    let vB = b[orderBy];
+    if (['startDate', 'birth'].includes(orderBy)) {
+      let dateA = vA.split('/');
+      vA = new Date(dateA[2], dateA[1] - 1, dateA[0]);
+      let dateB = vB.split('/');
+      vB = new Date(dateB[2], dateB[1] - 1, dateB[0]);
     }
-    if (b[orderBy] < a[orderBy]) {
+    if (vB < vA) {
       return -1;
     }
-    if (b[orderBy] > a[orderBy]) {
+    if (vB > vA) {
       return 1;
     }
+
     return 0;
   }
 
@@ -71,13 +106,11 @@ function ListeEmployees() {
   function stableSort(array, comparator) {
     const stabilizedThis = array.map((el, index) => [el, index]);
     stabilizedThis.sort((a, b) => {
-      
-        const order = comparator(a[0], b[0]);
-        if (order !== 0) {
-          return order;
-        }
-        return a[1] - b[1];
-      
+      const order = comparator(a[0], b[0]);
+      if (order !== 0) {
+        return order;
+      }
+      return a[1] - b[1];
     });
     return stabilizedThis.map((el) => el[0]);
   }
@@ -96,6 +129,13 @@ function ListeEmployees() {
       <h1 className="title deux">Current Employees</h1>
       <Paper sx={{ width: '60%', margin: 'auto', overflow: 'hidden' }}>
         <TableContainer sx={{ maxHeight: 350 }}>
+          <label>Search :</label>
+          <input
+            type="text"
+            onChange={(event) => {
+              setSearchTerm(event.target.value);
+            }}
+          />
           <Table stickyHeader aria-label="sticky table">
             <TableHead>
               <TableRow>
