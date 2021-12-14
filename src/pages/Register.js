@@ -31,6 +31,7 @@ const Register = () => {
       JSON.parse(localStorage.getItem('listeEmployees')) || [];
     listeEmployees = [...listeEmployees, employeeForm];
     localStorage.setItem('listeEmployees', JSON.stringify(listeEmployees));
+    toast('Bien joué le boss')
   };
   return (
     <main>

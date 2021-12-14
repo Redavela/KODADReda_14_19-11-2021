@@ -129,6 +129,19 @@ function ListeEmployees() {
       <h1 className="title deux">Current Employees</h1>
       <Paper sx={{ width: '60%', margin: 'auto', overflow: 'hidden' }}>
         <TableContainer sx={{ maxHeight: 350 }}>
+        <TablePagination
+          classes={{
+            displayedRows: 'Show',
+            actions:"Show"}}
+          labelRowsPerPage='Show entries :'
+          rowsPerPageOptions={[10, 25, 50, 100]}
+          component="div"
+          count={rows.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
           <label>Search :</label>
           <input
             type="text"
@@ -183,7 +196,7 @@ function ListeEmployees() {
           </Table>
         </TableContainer>
         <TablePagination
-          rowsPerPageOptions={[10, 25, 50, 100]}
+          labelDisplayedRows= {function defaultLabelDisplayedRows({ from, to, count }) { return `Showing :${from}–${to} of ${count !== -1 ? count : `more than ${to}`}`; }}
           component="div"
           count={rows.length}
           rowsPerPage={rowsPerPage}
