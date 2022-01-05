@@ -24,8 +24,6 @@ const columns = [
 ];
 
 function ListeEmployees() {
-  const listeEmployees =
-    JSON.parse(localStorage.getItem('listeEmployees')) || [];
 
   const [rows, setRows] = useState([]);
   const [page, setPage] = useState(0);
@@ -39,23 +37,15 @@ function ListeEmployees() {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
-
+  const getListeEmployees = () => {
+    return JSON.parse(localStorage.getItem('listeEmployees')) || [];
+  };
   const [order, setOrder] = useState('asc');
   const [orderBy, setOrderBy] = useState('firstName');
 
   useEffect(() => {
     setRows(
-      listeEmployees
-        .filter((employee, index) => {
-          let isFilter = false;
-          Object.keys(employee).some(function (item) {
-            isFilter = employee[item].includes(searchTerm);
-            if (isFilter) {
-              return true;
-            }
-          });
-          return isFilter;
-        })
+      getListeEmployees()
         .map((employee) => {
           return {
             ...employee,
@@ -63,20 +53,17 @@ function ListeEmployees() {
             birth: format(new Date(employee.birth), 'dd/MM/yyyy'),
           };
         })
+        .filter((employee, index) => {
+          let isFilter = false;
+          Object.keys(employee).some((item) => {
+            isFilter = employee[item].includes(searchTerm);
+            return isFilter;
+          });
+          return isFilter;
+        })
     );
   }, [searchTerm]);
 
-  useEffect(() => {
-    setRows(
-      listeEmployees.map((employee) => {
-        return {
-          ...employee,
-          startDate: format(new Date(employee.startDate), 'dd/MM/yyyy'),
-          birth: format(new Date(employee.birth), 'dd/MM/yyyy'),
-        };
-      })
-    );
-  }, []);
 
   function descendingComparator(a, b, orderBy) {
     let vA = a[orderBy];
@@ -93,7 +80,6 @@ function ListeEmployees() {
     if (vB > vA) {
       return 1;
     }
-
     return 0;
   }
 
@@ -102,7 +88,6 @@ function ListeEmployees() {
       ? (a, b) => descendingComparator(a, b, orderBy)
       : (a, b) => -descendingComparator(a, b, orderBy);
   }
-
   function stableSort(array, comparator) {
     const stabilizedThis = array.map((el, index) => [el, index]);
     stabilizedThis.sort((a, b) => {
@@ -120,35 +105,46 @@ function ListeEmployees() {
     setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(property);
   };
-
   const createSortHandler = (property) => (event) => {
     handleRequestSort(event, property);
   };
   return (
     <>
       <h1 className="title deux">Current Employees</h1>
-      <Paper sx={{ width: '60%', margin: 'auto', overflow: 'hidden' }}>
-        <TableContainer sx={{ maxHeight: 350 }}>
-        <TablePagination
-          classes={{
-            displayedRows: 'Show',
-            actions:"Show"}}
-          labelRowsPerPage='Show entries :'
-          rowsPerPageOptions={[10, 25, 50, 100]}
-          component="div"
-          count={rows.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-        />
-          <label>Search :</label>
-          <input
-            type="text"
-            onChange={(event) => {
-              setSearchTerm(event.target.value);
-            }}
-          />
+      <Paper
+        sx={{
+          width: '950px',
+          margin: 'auto',
+        }}
+      >
+        <TableContainer sx={{ maxHeight: 750 }}>
+          <div className="tabSearch">
+            <TablePagination
+              classes={{
+                displayedRows: 'Show',
+                actions: 'Show',
+              }}
+              labelRowsPerPage="Show entries :"
+              rowsPerPageOptions={[10, 25, 50, 100]}
+              component="div"
+              count={rows.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              onPageChange={handleChangePage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
+            />
+            <div className="tabSearchInput">
+              <label htmlFor="searchBar">Search :</label>
+              <input
+                id="searchBar"
+                type="text"
+                onChange={(event) => {
+                  setSearchTerm(event.target.value);
+                }}
+              />
+            </div>
+          </div>
+
           <Table stickyHeader aria-label="sticky table">
             <TableHead>
               <TableRow>
@@ -171,14 +167,9 @@ function ListeEmployees() {
             <TableBody>
               {stableSort(rows, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((row) => {
+                .map((row, index) => {
                   return (
-                    <TableRow
-                      hover
-                      role="checkbox"
-                      tabIndex={-1}
-                      key={row.firstName}
-                    >
+                    <TableRow hover role="checkbox" tabIndex={-1} key={index}>
                       {columns.map((column) => {
                         const value = row[column.id];
                         return (
@@ -196,7 +187,15 @@ function ListeEmployees() {
           </Table>
         </TableContainer>
         <TablePagination
-          labelDisplayedRows= {function defaultLabelDisplayedRows({ from, to, count }) { return `Showing :${from}–${to} of ${count !== -1 ? count : `more than ${to}`}`; }}
+          labelDisplayedRows={function defaultLabelDisplayedRows({
+            from,
+            to,
+            count,
+          }) {
+            return `Showing ${from} to ${to} of ${
+              count !== -1 ? count : `more than ${to}`
+            } entries`;
+          }}
           component="div"
           count={rows.length}
           rowsPerPage={rowsPerPage}
@@ -211,5 +210,4 @@ function ListeEmployees() {
     </>
   );
 }
-
 export default ListeEmployees;

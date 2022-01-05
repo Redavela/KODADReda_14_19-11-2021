@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { DropDown } from 'dropdownlib-reda';
 import { states, department } from '../DropDownData';
 import { toast } from 'react-toastify';
-
+import { format } from 'date-fns';
 
 const Register = () => {
   const [employeeForm, setEmployeeForm] = useState({
@@ -18,7 +18,11 @@ const Register = () => {
     department: department[0].value,
   });
 
+  const dateMajority = new Date();
+  dateMajority.setFullYear(dateMajority.getFullYear()-18);
+
   const handleChange = (e) => {
+    console.log(e.target.id)
     setEmployeeForm({
       ...employeeForm,
       [e.target.id]: e.target.value,
@@ -27,11 +31,22 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let listeEmployees =
-      JSON.parse(localStorage.getItem('listeEmployees')) || [];
-    listeEmployees = [...listeEmployees, employeeForm];
-    localStorage.setItem('listeEmployees', JSON.stringify(listeEmployees));
-    toast('Bien joué le boss')
+    let isEmpty = false;
+    for (let employeeField in employeeForm) {
+      if (!employeeForm[employeeField]) {
+        isEmpty = true;
+      }
+    }
+
+    if (isEmpty) {
+      toast.warn('All fields must be completed !'); 
+    } else {
+      let listeEmployees =
+        JSON.parse(localStorage.getItem('listeEmployees')) || [];
+      listeEmployees = [...listeEmployees, employeeForm];
+      localStorage.setItem('listeEmployees', JSON.stringify(listeEmployees));
+      toast.success('employee successfully created !');
+    }
   };
   return (
     <main>
@@ -58,15 +73,16 @@ const Register = () => {
             id="lastName"
           />
 
-          <label htmlFor="date-of-birth">Date of Birth</label>
+          <label htmlFor="birth">Date of Birth</label>
           <input
             id="birth"
             value={employeeForm.birth}
             onChange={handleChange}
             type="date"
+            max={format(dateMajority, 'yyyy-MM-dd')}
           />
 
-          <label htmlFor="start-date">Start Date</label>
+          <label htmlFor="startDate">Start Date</label>
           <input
             id="startDate"
             value={employeeForm.startDate}
@@ -100,13 +116,12 @@ const Register = () => {
               label="State"
             />
 
-            <label htmlFor="zip-code">Zip Code</label>
+            <label htmlFor="zipCode">Zip Code</label>
             <input
               id="zipCode"
               value={employeeForm.zipCode}
               onChange={handleChange}
               type="number"
-              required={false}
             />
           </fieldset>
           <DropDown
