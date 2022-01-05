@@ -22,7 +22,6 @@ const Register = () => {
   dateMajority.setFullYear(dateMajority.getFullYear()-18);
 
   const handleChange = (e) => {
-    console.log(e.target.id)
     setEmployeeForm({
       ...employeeForm,
       [e.target.id]: e.target.value,
