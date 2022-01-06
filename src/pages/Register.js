@@ -45,6 +45,18 @@ const Register = () => {
       listeEmployees = [...listeEmployees, employeeForm];
       localStorage.setItem('listeEmployees', JSON.stringify(listeEmployees));
       toast.success('employee successfully created !');
+      setEmployeeForm({
+        firstName: '',
+        lastName: '',
+        birth: '',
+        startDate: '',
+        street: '',
+        city: '',
+        state: states[0].value,
+        zipCode: '',
+        department: department[0].value,
+      });
+      
     }
   };
   return (
