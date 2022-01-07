@@ -45,12 +45,28 @@ label {
 
 button {
   padding: 4px 10px;
-  margin: auto;
+  margin: 20px auto;
   display: flex;
 }
 
-.Show{
+.Show {
   display: none;
 }
 
+.tabSearch {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+}
 
+.tabSearchInput {
+  align-items: center;
+  display: flex;
+}
+
+.tabSearchInput,label{
+  margin: 5px;
+}
+input {
+  padding: 4px;
+}

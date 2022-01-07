@@ -117,33 +117,8 @@ function ListeEmployees() {
           margin: 'auto',
         }}
       >
-        <TableContainer sx={{ maxHeight: 750 }}>
-          <div className="tabSearch">
-            <TablePagination
-              classes={{
-                displayedRows: 'Show',
-                actions: 'Show',
-              }}
-              labelRowsPerPage="Show entries :"
-              rowsPerPageOptions={[10, 25, 50, 100]}
-              component="div"
-              count={rows.length}
-              rowsPerPage={rowsPerPage}
-              page={page}
-              onPageChange={handleChangePage}
-              onRowsPerPageChange={handleChangeRowsPerPage}
-            />
-            <div className="tabSearchInput">
-              <label htmlFor="searchBar">Search :</label>
-              <input
-                id="searchBar"
-                type="text"
-                onChange={(event) => {
-                  setSearchTerm(event.target.value);
-                }}
-              />
-            </div>
-          </div>
+        <TableContainer sx={{ maxHeight: 550 }}>
+         
 
           <Table stickyHeader aria-label="sticky table">
             <TableHead>
@@ -186,6 +161,7 @@ function ListeEmployees() {
             </TableBody>
           </Table>
         </TableContainer>
+         <div className="tabSearch">
         <TablePagination
           labelDisplayedRows={function defaultLabelDisplayedRows({
             from,
@@ -203,6 +179,17 @@ function ListeEmployees() {
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
+            <div className="tabSearchInput">
+              <label htmlFor="searchBar">Search :</label>
+              <input
+                id="searchBar"
+                type="text"
+                onChange={(event) => {
+                  setSearchTerm(event.target.value);
+                }}
+              />
+            </div>
+          </div>
       </Paper>
       <Link className="link" to="/">
         Home
