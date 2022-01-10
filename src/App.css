@@ -16,6 +16,16 @@ body{
 form {
   margin-top: 20px;
 }
+
+legend{
+  font-size: large;
+  font-weight: 900;
+  color: rgb(33, 54, 83);
+}
+
+fieldset{
+  border-radius: 5px;
+}
 .container {
   display: flex;
   flex-direction: column;
@@ -34,12 +44,6 @@ form {
   font-size: 18px;
 }
 
-.link {
-  margin: 15px auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 label {
   display: block;
   margin-top: 1rem;
@@ -51,6 +55,9 @@ label {
 
 button {
   padding: 4px 10px;
+  border-radius: 5px;
+  outline: none;
+  text-decoration: none;
   margin: 20px auto;
   display: flex;
 }
@@ -78,12 +85,24 @@ input {
 }
 
 .link {
-  color: aliceblue;
+  margin: 15px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(27, 36, 44);
   outline: none;
   text-decoration: none;
 }
 
 .link:hover,
 .link:focus{
-  color: blue;
+  color: rgb(39, 74, 123);
 }
+
+.css-y8ay40-MuiTableCell-root:first-child{
+  border-radius: 8px 0 0 0;
+}
+
+.css-y8ay40-MuiTableCell-root:last-child{
+  border-radius: 0 8px  0 0;
+} 
