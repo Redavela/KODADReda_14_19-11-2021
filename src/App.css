@@ -7,6 +7,12 @@
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+body{
+  background-image: url(./trianglify-lowres.png);
+  background-size: cover;
+  background-attachment: fixed;
+}
+
 form {
   margin-top: 20px;
 }
@@ -69,4 +75,15 @@ button {
 }
 input {
   padding: 4px;
+}
+
+.link {
+  color: aliceblue;
+  outline: none;
+  text-decoration: none;
+}
+
+.link:hover,
+.link:focus{
+  color: blue;
 }

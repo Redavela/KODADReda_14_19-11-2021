@@ -117,7 +117,7 @@ function ListeEmployees() {
           margin: 'auto',
         }}
       >
-        <TableContainer sx={{ maxHeight: 550 }}>
+        <TableContainer >
          
 
           <Table stickyHeader aria-label="sticky table">
