@@ -23,9 +23,6 @@ legend{
   color: rgb(33, 54, 83);
 }
 
-fieldset{
-  border-radius: 5px;
-}
 .container {
   display: flex;
   flex-direction: column;
@@ -51,6 +48,7 @@ label {
 }
 .address {
   padding: 5px 40px 10px 10px;
+  border-radius:5px;
 }
 
 button {
@@ -60,6 +58,7 @@ button {
   text-decoration: none;
   margin: 20px auto;
   display: flex;
+  cursor: pointer;
 }
 
 .Show {
@@ -89,7 +88,7 @@ input {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgb(27, 36, 44);
+  color: #f6f6f6(27, 36, 44);
   outline: none;
   text-decoration: none;
 }
