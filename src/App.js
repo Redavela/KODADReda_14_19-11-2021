@@ -12,8 +12,8 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Register />} />
-          <Route path="/liste" element={<ListeEmployees />} />
+          <Route path="/KODADReda_14_19-11-2021/" element={<Register />} />
+          <Route path="/KODADReda_14_19-11-2021/liste" element={<ListeEmployees />} />
         </Routes>
         <ToastContainer
           position="bottom-left"
