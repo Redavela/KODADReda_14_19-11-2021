@@ -1,0 +1,35 @@
+{
+  "files": {
+    "static/js/0.fde66b1d.chunk.js": "/KODADReda_14_19-11-2021/static/js/0.fde66b1d.chunk.js",
+    "static/js/0.fde66b1d.chunk.js.map": "/KODADReda_14_19-11-2021/static/js/0.fde66b1d.chunk.js.map",
+    "main.css": "/KODADReda_14_19-11-2021/static/css/main.95b7f917.chunk.css",
+    "main.js": "/KODADReda_14_19-11-2021/static/js/main.dfae1b45.chunk.js",
+    "main.js.map": "/KODADReda_14_19-11-2021/static/js/main.dfae1b45.chunk.js.map",
+    "runtime-main.js": "/KODADReda_14_19-11-2021/static/js/runtime-main.724b7528.js",
+    "runtime-main.js.map": "/KODADReda_14_19-11-2021/static/js/runtime-main.724b7528.js.map",
+    "static/js/3.2264baa6.chunk.js": "/KODADReda_14_19-11-2021/static/js/3.2264baa6.chunk.js",
+    "static/js/3.2264baa6.chunk.js.map": "/KODADReda_14_19-11-2021/static/js/3.2264baa6.chunk.js.map",
+    "static/css/4.58a45539.chunk.css": "/KODADReda_14_19-11-2021/static/css/4.58a45539.chunk.css",
+    "static/js/4.146d4fbc.chunk.js": "/KODADReda_14_19-11-2021/static/js/4.146d4fbc.chunk.js",
+    "static/js/4.146d4fbc.chunk.js.map": "/KODADReda_14_19-11-2021/static/js/4.146d4fbc.chunk.js.map",
+    "static/css/5.39bfcb42.chunk.css": "/KODADReda_14_19-11-2021/static/css/5.39bfcb42.chunk.css",
+    "static/js/5.9a4b3cd8.chunk.js": "/KODADReda_14_19-11-2021/static/js/5.9a4b3cd8.chunk.js",
+    "static/js/5.9a4b3cd8.chunk.js.map": "/KODADReda_14_19-11-2021/static/js/5.9a4b3cd8.chunk.js.map",
+    "static/js/6.4461af56.chunk.js": "/KODADReda_14_19-11-2021/static/js/6.4461af56.chunk.js",
+    "static/js/6.4461af56.chunk.js.map": "/KODADReda_14_19-11-2021/static/js/6.4461af56.chunk.js.map",
+    "index.html": "/KODADReda_14_19-11-2021/index.html",
+    "static/css/4.58a45539.chunk.css.map": "/KODADReda_14_19-11-2021/static/css/4.58a45539.chunk.css.map",
+    "static/css/5.39bfcb42.chunk.css.map": "/KODADReda_14_19-11-2021/static/css/5.39bfcb42.chunk.css.map",
+    "static/css/main.95b7f917.chunk.css.map": "/KODADReda_14_19-11-2021/static/css/main.95b7f917.chunk.css.map",
+    "static/js/3.2264baa6.chunk.js.LICENSE.txt": "/KODADReda_14_19-11-2021/static/js/3.2264baa6.chunk.js.LICENSE.txt",
+    "static/js/4.146d4fbc.chunk.js.LICENSE.txt": "/KODADReda_14_19-11-2021/static/js/4.146d4fbc.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/KODADReda_14_19-11-2021/static/media/trianglify-lowres.2759ca7a.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.724b7528.js",
+    "static/css/4.58a45539.chunk.css",
+    "static/js/4.146d4fbc.chunk.js",
+    "static/css/main.95b7f917.chunk.css",
+    "static/js/main.dfae1b45.chunk.js"
+  ]
+}
