@@ -10,10 +10,10 @@ const ListeEmployees = loadable(() => import('./pages/ListeEmployees'))
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Routes>
-          <Route path="/KODADReda_14_19-11-2021/" element={<Register />} />
-          <Route path="/KODADReda_14_19-11-2021/liste" element={<ListeEmployees />} />
+          <Route path="/" element={<Register />} />
+          <Route path="/liste" element={<ListeEmployees />} />
         </Routes>
         <ToastContainer
           position="bottom-left"
