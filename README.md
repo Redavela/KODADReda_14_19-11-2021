@@ -1,7 +1,8 @@
 # Main mission
 
-. Pass a jQuery library to React
-. Converting a jQuery plugin to a React component
+1. Pass a jQuery library to React
+
+2. Converting a jQuery plugin to a React component
 
 
 # Getting Started with Create React App
@@ -11,6 +12,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Github-pages && Component React 
 github-page:
 https://redavela.github.io/KODADReda_14_19-11-2021/
+
 jQuery plugin converts to a React component:
 https://github.com/Redavela/DropDownLib
 
